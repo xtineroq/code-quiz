@@ -1,0 +1,32 @@
+main {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 100%;
+}
+
+/* Header Styling */
+header {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 150%;
+}
+  
+header a {
+  color: #004d4d;
+}
+
+header a:hover {
+  color: #00b3b3;
+}
+
+/* Button Styling */
+main button {
+  margin: 5px;
+  background-color: #004d4d;
+  border-radius: 5px;
+  padding: 8px 12px;
+  color: white;
+}
+
+button:hover {
+  background-color: #00b3b3;
+}
+ 
