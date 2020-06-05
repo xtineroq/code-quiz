@@ -5,9 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Code Quiz</title>
 
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css"/>
+
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery.js"></script>
 </head>
 <body>
 
@@ -17,24 +25,27 @@
         <a class="nav-link" href="highscores.html">View Highscores</a>
       </li>
       <li class="timer">
-        <a class="nav-link disabled" href="#" aria-disabled="true">Time: </a>
+        <a class="nav-link disabled" href="#" aria-disabled="true">Time: <span id="time">60</span></a>
       </li>
     </ul>
   </header>
 
-  <main class= "container">
+  <main class="container">
 
     <div class="jumbotron">
-      <h1 class="heading">Coding Quiz Challenge!</h1>
-      <p class="lead"> Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
-      <hr/>
-      <button id="startBtn">Start Quiz</button>
+      <div id= "main-screen">
+        <h1 class="heading">Coding Quiz Challenge!</h1>
+        <p class="lead"> Try to answer the following code-related questions within 60 seconds. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
+        <hr/>
+        <button id="startBtn">Start Quiz</button>
+      </div>
 
       <div id="qContainer" class="hide">
         <h2 id="qTitle"></h2>
+        </br>
         <div id="qChoices" class="qChoices"></div>
       </div>
-    
+      
       <div id="endQuiz" class="hide">
         <h2>Finished!</h2>
         <p>Your final score is: <span id="fScore"></span></p>
@@ -43,7 +54,6 @@
           <button id="submitBtn">Submit</button>
         </p>
       </div>
-
     </div>
 
   </main>
