@@ -1,29 +1,29 @@
 // Array of questions, choices and answers
 var questionsArr = [
     {
-      question: "Who invented Javascript?",
+      question: "1. Who invented Javascript?",
       choices: ["Mark Zuckerberg", "Bill Gates", "Brendan Eich", "Douglas Crockford"],
-      answer: "Brendan Eich"
+      answer: 2
     },
     {
-      question: "What scripting language is jQuery written in?",
+      question: "2. What scripting language is jQuery written in?",
       choices: ["VBScript", "JavaScript", "Python", "PHP"],
-      answer: "JavaScript"
+      answer: 1
     },
     {
-      question: "Which of the following is not a reserved word in JavaScript?",
+      question: "3. Which of the following is not a reserved word in JavaScript?",
       choices: ["interface", "throws", "program", "short"],
-      answer: "program"
+      answer: 2
     },
     {
-      question: "Look at the following selector: $('div p'). What does it select??",
+      question: "4. Look at the following selector: $('div p'). What does it select??",
       choices: ["All div elements with a p element", "All p elements inside a div element", "The first p element inside a div element", "None of the above"],
-      answer: "All p elements inside a div element"
+      answer: 1
     },
     {
-      question: "The jQuery animate() method can be used to animate ANY CSS property?",
+      question: "5. The jQuery animate() method can be used to animate ANY CSS property?",
       choices: ["Yes", "All properties except the shorthand properties", "Only properties containing numeric values"],
-      answer: "Only properties containing numeric values"
-    }
-  ];
+      answer: 2
+    },
+] 
   
