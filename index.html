@@ -33,9 +33,10 @@
   <main class="container">
 
     <div class="jumbotron">
+
       <div id= "main-screen">
         <h1 class="heading">Coding Quiz Challenge!</h1>
-        <p class="lead"> Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
+        <p class="lead"> Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by 10 seconds!</p>
         <hr/>
         <button id="startBtn">Start Quiz</button>
       </div>
@@ -44,8 +45,9 @@
         <h2 id="qTitle"></h2>
         </br>
         <div id="qChoices" class="qChoices"></div>
+        <hr>
       </div>
-      
+
       <div id="endQuiz" class="hide">
         <h2>Finished!</h2>
         <p>Your final score is: <span id="fScore"></span></p>
@@ -53,9 +55,13 @@
           Enter your initials: <input type="text" id="userInit" max="2" />
           <button id="submitBtn">Submit</button>
         </p>
+        <hr>
       </div>
 
-      <div id="result" class="result hide"></div>
+      <div class="result hide">
+        <h4 id="result"></h4>
+      </div>
+    
     </div>
 
   </main>

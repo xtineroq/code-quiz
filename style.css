@@ -1,3 +1,10 @@
+body {
+  background-image: url(assets/bg-image.jpg);
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+}
+
 main {
   font-family: 'Quicksand', sans-serif;
   font-size: 100%;
@@ -10,7 +17,7 @@ header {
 }
   
 header a {
-  color: #004d4d;
+  color: whitesmoke;
 }
 
 header a:hover {
@@ -19,7 +26,6 @@ header a:hover {
 
 /* Button Styling */
 main button {
-  display: inline-block;
   margin: 5px;
   background-color: #004d4d;
   border-radius: 5px;
@@ -33,4 +39,37 @@ button:hover {
  
 .hide {
   display: none;
+}
+
+.qChoices button {
+  display: block;
+}
+
+.result {
+  font-style: italic;
+  margin-top: 10px;
+  padding-top: 10px;
+  margin-left: 30px;
+  color: #004d4d;
+}
+
+ol {
+  padding-left: 0px;
+  max-height: 300px;
+  overflow: auto;
+}
+
+.hsList li {
+  padding: 5px;
+  list-style: decimal inside none;
+}
+
+.hsList li:nth-child(odd) {
+  background-color: #00b3b3;
+}
+
+.scores {
+  position: absolute;
+  top: 15px;
+  left: 15px;
 }
