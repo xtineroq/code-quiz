@@ -19,6 +19,7 @@ header a:hover {
 
 /* Button Styling */
 main button {
+  display: inline-block;
   margin: 5px;
   background-color: #004d4d;
   border-radius: 5px;

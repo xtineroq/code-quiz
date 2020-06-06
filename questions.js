@@ -6,24 +6,24 @@ var questionsArr = [
       answer: "Brendan Eich"
     },
     {
-      question: "Inside which HTML element do we put the JavaScript?",
-      choices: ["<scripting>", "<js>", "<script>", "<javascript>"],
-      answer: "<script>"
+      question: "What scripting language is jQuery written in?",
+      choices: ["VBScript", "JavaScript", "Python", "PHP"],
+      answer: "JavaScript"
     },
     {
-      question: "How do you round the number 7.25, to the nearest integer?",
-      choices: ["Math.round(7.25)", "Math.rnd(7.25)", "round(7.25)", "rnd(7.25)"],
-      answer: "Math.round(7.25)"
+      question: "Which of the following is not a reserved word in JavaScript?",
+      choices: ["interface", "throws", "program", "short"],
+      answer: "program"
     },
     {
-      question: "Which operator is used to assign a value to a variable?",
-      choices: ["-", "x", "+", "="],
-      answer: "="
+      question: "Look at the following selector: $('div p'). What does it select??",
+      choices: ["All div elements with a p element", "All p elements inside a div element", "The first p element inside a div element", "None of the above"],
+      answer: "All p elements inside a div element"
     },
     {
-      question: "How can you add a comment in a JavaScript?",
-      choices: ["<!-- comment -->", "/* comment */", "// comment", "* comment"],
-      answer: "// comment"
+      question: "The jQuery animate() method can be used to animate ANY CSS property?",
+      choices: ["Yes", "All properties except the shorthand properties", "Only properties containing numeric values"],
+      answer: "Only properties containing numeric values"
     }
   ];
   
