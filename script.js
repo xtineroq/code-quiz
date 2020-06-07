@@ -38,13 +38,21 @@ $(document).ready(function() {
     // Fetch questions and choices function
     function showQuestions() {
 
-        $("#qTitle").text(questionsArr[qcIndex].question);
-        $("#qChoices").text("");
+        if (qcIndex <= questionsArr.length) {
+            $("#qTitle").text(questionsArr[qcIndex].question);
+            $(".qChoices").text("");
 
-        questionsArr[qcIndex].choices.forEach(function(selection) {
-            $("#qChoices").append("<div><button>" + selection + "</button></div>")
-        });
-        $(".qChoices").click(revealAnswer);
+            var storeChoices = questionsArr[qcIndex].choices;
+
+            storeChoices.forEach(function(selection) {
+                $(".qChoices").append("<button>" + selection + "</button>");
+            });
+
+        } else {
+            quizComplete();
+        }
+        $("#qChoices").unbind('click');
+        $("#qChoices").click(revealAnswer);
     }
 
     // Countdown timer
@@ -61,6 +69,12 @@ $(document).ready(function() {
     function revealAnswer(e) {
         // Compare user answer vs result
         var userAnswer = questionsArr[qcIndex].choices.indexOf(e.target.innerHTML);
+
+        $(".result").removeClass("hide");
+        setTimeout(function() {
+            $(".result").addClass("hide");
+        }, 500);
+
         $("#result").text("");
 
         if (userAnswer === questionsArr[qcIndex].answer) {
@@ -74,19 +88,9 @@ $(document).ready(function() {
             $("#result").text("Wrong!");
         }
 
-        $(".result").removeClass("hide");
-        setTimeout(function() {
-            $(".result").addClass("hide");
-        }, 500);
-
-        // Check if we still have questions
-        if (qcIndex === questionsArr.length) {
-            quizComplete();
-        }
-
         // Next question
         qcIndex++;
-        showQuestions();
+        setTimeout(showQuestions, 500);
     }
 
     // End of Quiz
@@ -104,7 +108,7 @@ $(document).ready(function() {
         var userInitials = $("#userInit").val().trim();
       
         if (userInitials === "") {
-            $("#userInit").attr("placeholder", "Please enter initials")
+            $("#userInit").attr("placeholder", "Please enter initials");
         } else {
           highScores[userId] = {id: userId, score: time, userInitials: userInitials};
           localStorage.setItem("highScores", JSON.stringify(highScores));
