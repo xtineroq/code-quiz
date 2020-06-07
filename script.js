@@ -4,6 +4,7 @@ $(document).ready(function() {
     var qcIndex = 0;
     var timer = 50;
     var clock;
+    var score = 0;
 
     // sound effects
     var soundRight = new Audio("assets/right-sound.wav");
@@ -11,15 +12,15 @@ $(document).ready(function() {
 
     // Existing highscores
     var highScores = {};
-    if( localStorage.getItem("highScores") ){
-        highScores = JSON.parse(localStorage.getItem("highScores"));
+    if( window.localStorage.getItem("hScores") ){
+        highScores = JSON.parse(window.localStorage.getItem("hScores"));
     }
 
     var userId = 1;
-    if( localStorage.getItem("userId")) {
-        playerId = parseInt(localStorage.getItem("userId")) + 1;
+    if( window.localStorage.getItem("userId")) {
+        playerId = parseInt(window.localStorage.getItem("userId")) + 1;
     }
-    localStorage.setItem("userId", userId);
+    window.localStorage.setItem("userId", userId);
 
     // Start button function
     $("#startBtn").on("click", function quizStart() {
@@ -38,7 +39,7 @@ $(document).ready(function() {
     // Fetch questions and choices function
     function showQuestions() {
 
-        if (qcIndex <= questionsArr.length) {
+        if (qcIndex < questionsArr.length) {
             $("#qTitle").text(questionsArr[qcIndex].question);
             $(".qChoices").text("");
 
@@ -99,47 +100,54 @@ $(document).ready(function() {
         $("#endQuiz").removeClass("hide");
         $("#fScore").text(timer);
         $("#qContainer").addClass("hide");
+        
+        $(document).on("click", "#submitBtn", function() {
+            saveScore();
+        });
+
+        $("#userInit").keyup(function enterKey(event) {
+            if (event.key === "Enter") {
+            saveScore();
+            }
+        });
     }
 
-    // Save user initials and scores
-    $("#submitBtn").on("click", function saveScore(e) {
-        e.preventDefault();
+    // Save user initials and score
+    var saveScore = function() {
 
-        var userInitials = $("#userInit").val().trim();
-      
-        if (userInitials === "") {
-            $("#userInit").attr("placeholder", "Please enter initials");
+        var userInitials = $("#userInit").val();
+
+        // Validate input
+        if (userInitials !== "") {
+
+            highScores[userId] = {id: userId, score: timer, initials: userInitials};
+            window.localStorage.setItem("hScores", JSON.stringify(highScores));
+        
+            window.location.href = "highscores.html";
+
+            showHighScores();
+
         } else {
-          highScores[userId] = {id: userId, score: time, userInitials: userInitials};
-          localStorage.setItem("highScores", JSON.stringify(highScores));
-      
-          showHighScores();
+            $("#userInit").attr("placeholder", "Please enter initials");
         }
-    });
+    }
 
-    // If the user pressed enter to save
-     $("#userInit").keyup(function enterKey(event) {
-         if (event.key === "Enter") {
-           saveScore();
-         }
-     });
+    function showHighScores() {
 
-     function showHighScores() {
-      
-          highScores.sort(function(x, y) {
-            return x.hScore - y.hScore;
-          });
-      
-          highScores.forEach(function(hScore) {
+        var sortScores = Object.values(highScores).sort((x, y) => (x.score > by.score) ? -1 : 1);
+        
+
+        sortScores.forEach(function(hScore) {
             var scoreList = $("#highScores").text("<li>" + hScore.initials + " : " + hScore.hScore + "</li>");
             $("#highScores").append(scoreList);
-          });
-       }
+        });
+
+        $("#clearHS").on("click", function clearSavedScores() {
+        window.localStorage.removeItem("hScores");
+        window.location.reload();
+        });
+    }
       
-       $("#clearHS").on("click", function clearSavedScores() {
-         localStorage.removeItem("highScores");
-         window.location.reload();
-       });
+       
       
-     showHighScores();
 });
