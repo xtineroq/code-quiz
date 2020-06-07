@@ -4,23 +4,10 @@ $(document).ready(function() {
     var qcIndex = 0;
     var timer = 50;
     var clock;
-    var score = 0;
 
     // sound effects
     var soundRight = new Audio("assets/right-sound.wav");
     var soundWrong = new Audio("assets/wrong-sound.wav");
-
-    // Existing highscores
-    var highScores = {};
-    if( window.localStorage.getItem("hScores") ){
-        highScores = JSON.parse(window.localStorage.getItem("hScores"));
-    }
-
-    var userId = 1;
-    if( window.localStorage.getItem("userId")) {
-        playerId = parseInt(window.localStorage.getItem("userId")) + 1;
-    }
-    window.localStorage.setItem("userId", userId);
 
     // Start button function
     $("#startBtn").on("click", function quizStart() {
@@ -112,16 +99,49 @@ $(document).ready(function() {
         });
     }
 
+    function showHighScores() {
+
+        var highScores = window.localStorage.getItem("userScore");
+        [].slice.call(highScores).sort(function(hsa, hsb) {
+            return (hsb.highScores - hsa.highScores);
+        });
+
+            if (highScores !== null) {
+                highScores = JSON.parse(highScores);
+            } else {
+                highScores = [];
+            }
+        
+        for (var i = 0; i < highScores.length; i++) {
+            var highScores = highScores[i];
+            $("#highScores").append($("<li>").text(highScores.initials + " : " + highScores.score));
+        }
+
+    }
+
     // Save user initials and score
     var saveScore = function() {
 
-        var userInitials = $("#userInit").val();
+        var userInitials = $("#userInit").val().trim();
 
         // Validate input
         if (userInitials !== "") {
 
-            highScores[userId] = {id: userId, score: timer, initials: userInitials};
-            window.localStorage.setItem("hScores", JSON.stringify(highScores));
+            var newHighScore = {score: timer, initials: userInitials};
+
+            var highScores = window.localStorage.getItem('userScore');
+
+            if (highScores !== null) {
+                highScores = JSON.parse(highScores);
+            } else {
+                highScores = [];
+            }
+
+            highScores.push(newHighScore);
+
+            window.localStorage.setItem("userScore", JSON.stringify(highScores));
+
+            $("#userInit").val("");
         
             window.location.href = "highscores.html";
 
@@ -132,22 +152,16 @@ $(document).ready(function() {
         }
     }
 
-    function showHighScores() {
-
-        var sortScores = Object.values(highScores).sort((x, y) => (x.score > by.score) ? -1 : 1);
-        
-
-        sortScores.forEach(function(hScore) {
-            var scoreList = $("#highScores").text("<li>" + hScore.initials + " : " + hScore.hScore + "</li>");
-            $("#highScores").append(scoreList);
-        });
-
-        $("#clearHS").on("click", function clearSavedScores() {
-        window.localStorage.removeItem("hScores");
-        window.location.reload();
-        });
-    }
+    
       
+    $("#clearHS").on("click", function clearSavedScores(e) {
+        e.preventDefault();
+        window.localStorage.removeItem("highScores");
+        window.location.reload();
+    });
+      
+    // run when page loads
+    showHighScores();
        
       
 });
