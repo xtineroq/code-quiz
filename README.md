@@ -1,5 +1,4 @@
-# cr-hw4-code-quiz
-Monash University Bootcamp Assignment - Code Quiz
+# Code Quiz
 
 ```
 This is a timed quiz on JavaScript fundamentals that stores high scores.
