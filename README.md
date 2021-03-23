@@ -31,4 +31,4 @@ When the game is over
 ![question-screen](assets/question-screen.png)
 
 URL of deployed application:
-https://xtineroq.github.io/cr-hw4-code-quiz/
+https://xtineroq.github.io/code-quiz/
